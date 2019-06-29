@@ -62,4 +62,9 @@ class Contact < ApplicationRecord
   def send_welcome_email
     ContactMailer.with(contacts: self).welcome_email.deliver
   end
+
+  def send_self_update
+    ContactMailer.with(contacts: self).self_update_contact.deliver
+  end
+
 end

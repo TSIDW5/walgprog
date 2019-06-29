@@ -1,1 +1,1 @@
-<h1>Seus dados foram atualizados, <%= @contact.name %></h1>
+<p><%= link_to 'Atualizar dados', contact_edit_url(@contact, @contact.update_data_token), :method => 'get'%></p> 
