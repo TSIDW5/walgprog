@@ -6,15 +6,15 @@ class Contact < ApplicationRecord
   validates :name, presence: true
   validates :email,
             presence: true,
-            length: { maximum: 255 },
-            format: { with: Devise.email_regexp },
-            uniqueness: { case_sensitive: false },
+            length: {maximum: 255},
+            format: {with: Devise.email_regexp},
+            uniqueness: {case_sensitive: false},
             email_unregistered: true
 
   validates :phone,
             presence: false,
-            length: { minimum: 14, maximum: 15 },
-            format: { with: PHONE_REGEX, allow_blank: true }
+            length: {minimum: 14, maximum: 15},
+            format: {with: PHONE_REGEX, allow_blank: true}
 
   def generate_token(column)
     begin
@@ -43,6 +43,12 @@ class Contact < ApplicationRecord
     false
   end
 
+  def exist_email(params_contact)
+    return true if Contact.exists?(:email => params_contact[:email])
+
+    false
+  end
+
   def equal_token(params)
     return true if params[:token].eql? unregister_token
 
@@ -52,7 +58,7 @@ class Contact < ApplicationRecord
   def valid_token(params)
     final_valid_time = (update_data_send_at + 2.hours)
 
-    if (params[:token].eql? update_data_token) && (final_valid_time > Time.zone.now)
+    if (params[:token].eql? update_data_token) && (final_valid_time >= Time.zone.now)
       return true
     end
 

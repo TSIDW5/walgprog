@@ -1,33 +1,28 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:unregister, :update, :edit, :confirm_unregister]
+  before_action :set_new_contact, only: :create
 
   def new
     @contact = Contact.new
   end
 
   def create
-    @contact = Contact.new(params_contact)
-    if !Contact.exists?(:email => params[:email])
-    @contact.generate_token(:unregister_token)
-    @contact.generate_token(:update_data_token)
-    @contact.update_data_send_at = Time.zone.now
-    if @contact.save
-      # ContactMailer.with(contacts: @contact).welcome_email.deliver
-      @contact.send_welcome_email
-      flash[:success] = I18n.t('flash.actions.create.m',
-        resource_name: I18n.t('activerecord.models.contact.one'))
-        redirect_to contacts_path
+    if !@contact.exist_email(params_contact)
+      generate_tokens
+      if @contact.save
+        save_sucess
+        @contact.send_welcome_email
       else
         flash.now[:error] = I18n.t('flash.actions.errors')
         render :new
-    end
+      end
     else
-      @contact.generate_token(:update_data_token)
-      @contact.update_data_send_at = Time.zone.now
+      set_contact_by_email
+      generate_tokens
       @contact.send_self_update
-      redirect_to contacts_path
+      render :update_email
+    end
   end
-end
 
   def edit
     if @contact.valid_token(params)
@@ -49,16 +44,39 @@ end
     render @contact.update_by_token(params, params_contact)
   end
 
-  def confirm_unregister; end
+  def save_sucess
+    flash[:success] = I18n.t('flash.actions.create.m',
+                             resource_name: I18n.t('activerecord.models.contact.one'))
+    redirect_to contacts_path
+  end
 
-  def unregistered; end
+  def confirm_unregister;
+  end
 
-  def updated; end
+  def unregistered;
+  end
+
+  def updated;
+  end
 
   private
 
+  def generate_tokens
+    @contact.generate_token(:unregister_token)
+    @contact.generate_token(:update_data_token)
+    @contact.update_data_send_at = Time.zone.now
+  end
+
+  def set_new_contact
+    @contact = Contact.new(params_contact)
+  end
+
   def set_contact
     @contact = Contact.find(params[:id])
+  end
+
+  def set_contact_by_email
+    @contact = Contact.where(email: params_contact[:email]).first
   end
 
   def params_contact

@@ -2,7 +2,7 @@
 <% provide(:page_title, t('devise.passwords.new.forgot_your_password')) %>
 <% provide(:title, t('devise.passwords.new.forgot_your_password')) %>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: contact_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
   <p class="text-muted">
