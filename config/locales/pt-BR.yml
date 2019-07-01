@@ -46,6 +46,9 @@ pt-BR:
       contact:
         institution: Instituição
         unregistered: Desregistrado
+        token_expired: Token inválido
+        email_exists: Email em uso
+        update_success: Atualizado com sucesso
       event:
         name: Nome
         initials: Iniciais
@@ -153,5 +156,6 @@ pt-BR:
     unregistered: Você foi desregistrado
     time_exceeded: O link não é mais valido
     update_sucess: Seus dados foram atualizados
-
-
+    email_exists: O email já está cadastrado. Verifique seu email para atualizar os dados
+    update_success: Contato atualizado com sucesso
+    confirm_unregister: Você realmente deseja se desregistrar?

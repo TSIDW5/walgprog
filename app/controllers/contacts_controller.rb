@@ -2,6 +2,8 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:unregister, :update, :edit, :confirm_unregister]
   before_action :set_new_contact, only: :create
 
+  layout 'layouts/contact'
+
   def new
     @contact = Contact.new
   end

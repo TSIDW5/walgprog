@@ -18,6 +18,8 @@
 // Config files
 //--------------------
 //= require config/namespace
+//= require config/jmask
+
 
 
 // App files
