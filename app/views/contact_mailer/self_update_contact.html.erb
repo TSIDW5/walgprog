@@ -1,1 +1,9 @@
+<%= t('devise.mailer.reset_password_instructions.subject') %><br>
+
+<%= t('devise.mailer.reset_password_instructions.instruction') %><br>
+
+<b><%= t('devise.mailer.reset_password_instructions.instruction_2') %><br></b>
+
 <p><%= link_to 'Atualizar dados', contact_edit_url(@contact, @contact.update_data_token), :method => 'get'%></p>
+
+<%= t('devise.mailer.reset_password_instructions.instruction_3') %>
