@@ -19,7 +19,7 @@ describe 'Contact::update', type: :feature do
 
   context 'with valid fields', js: true do
     it 'update contact' do
-      local_name = 'Novo Nome'
+      local_name = 'test Spec'
       local_email = 'novo@mail.com'
       local_phone = '(42) 99955-3214'
 

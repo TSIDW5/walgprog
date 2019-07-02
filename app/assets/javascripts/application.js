@@ -20,7 +20,7 @@
 //--------------------
 //= require config/namespace
 //= require config/jmask
-
+//= require config/selectize
 
 
 // App files
