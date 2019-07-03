@@ -19,7 +19,7 @@ describe 'Contact::update', type: :feature do
 
   context 'with valid fields', js: true do
     it 'update contact' do
-      local_name = 'test Spec'
+      local_name = 'Novo Nome'
       local_email = 'novo@mail.com'
       local_phone = '(42) 99955-3214'
 
@@ -31,6 +31,32 @@ describe 'Contact::update', type: :feature do
       click_button
 
       expect(page).to have_current_path contact_updated_path
+    end
+  end
+
+  context 'with invalids fields', js: true do
+    it 'show errors when fields are blank' do
+      fill_in 'contact_name', with: ''
+      fill_in 'contact_email', with: ''
+      fill_in 'contact_phone', with: ''
+      selectize '', from: 'contact_institution'
+      click_button
+
+      message_blank_error = I18n.t('errors.messages.blank')
+      expect(page).to have_message(message_blank_error, in: 'div.contact_name')
+      expect(page).to have_message(message_blank_error, in: 'div.contact_email')
+      expect(page).to have_message(I18n.t('errors.messages.too_short',
+                                          count: 14), in: 'div.contact_phone')
+    end
+
+    it 'show errros when phone and email are invalid' do
+      fill_in 'contact_email', with: 'email'
+      fill_in 'contact_phone', with: '131313'
+
+      click_button
+
+      expect(page).to have_message(I18n.t('errors.messages.invalid'), in: 'div.contact_phone')
+      expect(page).to have_message(I18n.t('errors.messages.invalid'), in: 'div.contact_email')
     end
   end
 end
