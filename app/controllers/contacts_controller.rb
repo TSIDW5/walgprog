@@ -21,16 +21,15 @@ class ContactsController < ApplicationController
     else
       set_contact_by_email
       generate_tokens
+      @contact.save
       @contact.send_self_update
       render :update_email
     end
   end
 
   def edit
-    if @contact.valid_token(params)
-      render :edit
-    else
-      flash[:error] = I18n.t('flash.actions.errors')
+    if !@contact.valid_token(params)
+      flash[:error] = 'Token inválido'
     end
   end
 
