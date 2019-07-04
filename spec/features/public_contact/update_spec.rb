@@ -30,7 +30,7 @@ describe 'Contact::update', type: :feature do
 
       click_button
 
-      expect(page).to have_current_path contact_updated_path
+      expect(page).to have_content(I18n.t('feedback.update_success'))
     end
   end
 
