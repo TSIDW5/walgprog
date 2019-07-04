@@ -1,6 +1,6 @@
-//= require selectize/selectize.min
 //= require sifter/sifter.min
 //= require microplugin/microplugin.min
+//= require selectize/selectize.min
 
 $(document).on('turbolinks:load', () => {
   WAlgProg.selectize();
