@@ -151,6 +151,8 @@ pt-BR:
     unregistered:
       subject: Você esta desregistrado do site do WAlgProg.
     updated:
+      subject: Foi realizada uma tentativa de cadastro utilizando seu email.
+    edit:
       subject: Seus dados foram atualizados.
   feedback:
     unregistered: Você foi desregistrado

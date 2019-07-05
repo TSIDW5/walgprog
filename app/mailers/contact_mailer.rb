@@ -16,6 +16,12 @@ class ContactMailer < ApplicationMailer
     email_with_name = %("#{@contact.name}" <#{@contact.email}>)
     mail(to: email_with_name, subject: I18n.t('mail.updated.subject'))
   end
+
+  def confirmation_update
+    @contact = params[:contacts]
+    email_with_name = %("#{@contact.name}" <#{@contact.email}>)
+    mail(to: email_with_name, subject: I18n.t('mail.edit.subject'))
+  end
 end
 
 # settings app rails

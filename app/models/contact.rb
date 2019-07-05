@@ -23,15 +23,16 @@ class Contact < ApplicationRecord
   end
 
   def update_by_token(params, params_contact)
-    if valid_token(params)
-      if update(params_contact)
-        ContactMailer.with(contacts: self).self_update_contact.deliver
-        return 'contacts/update_success'
+      if valid_token(params)
+        if update(params_contact)
+          ContactMailer.with(contacts: self).confirmation_update.deliver
+          return 'contacts/update_success'
+        end
+        'edit'
+      else
+        'contacts/time_exceeded'
       end
-      'edit'
     end
-    'contacts/time_exceeded'
-  end
 
   def update_by_token_to_unregister(params)
     if equal_token(params)
@@ -69,6 +70,10 @@ class Contact < ApplicationRecord
 
   def send_self_update
     ContactMailer.with(contacts: self).self_update_contact.deliver
+  end
+
+  def send_confirmation_update
+    ContactMailer.with(contacts: self).confirmation_update.deliver
   end
 
 end
