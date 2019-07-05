@@ -34,12 +34,14 @@ describe 'Contact::update', type: :feature do
     end
   end
 
-  context 'with invalids fields', js: true do
+  context 'with no valid fields', js: true do
     it 'show errors when fields are blank' do
+      
       fill_in 'contact_name', with: ''
       fill_in 'contact_email', with: ''
       fill_in 'contact_phone', with: ''
       selectize '', from: 'contact_institution'
+
       click_button
 
       message_blank_error = I18n.t('errors.messages.blank')
