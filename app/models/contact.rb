@@ -6,21 +6,22 @@ class Contact < ApplicationRecord
   validates :name, presence: true
   validates :email,
             presence: true,
-            length: { maximum: 255 },
-            format: { with: Devise.email_regexp },
-            uniqueness: { case_sensitive: false },
+            length: {maximum: 255},
+            format: {with: Devise.email_regexp},
+            uniqueness: {case_sensitive: false},
             email_unregistered: true
 
   validates :phone,
             presence: false,
-            length: { minimum: 14, maximum: 15 },
-            format: { with: PHONE_REGEX, allow_blank: true }
+            length: {minimum: 14, maximum: 15},
+            format: {with: PHONE_REGEX, allow_blank: true}
 
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
     end
-     while Contact.exists?(column => self[column])
+    while Contact.exists?(column => self[column])
+    end
   end
 
   def update_by_token(params, params_contact)
@@ -32,8 +33,8 @@ class Contact < ApplicationRecord
       'edit'
     else
       'contacts/time_exceeded'
-  end
     end
+  end
 
   def update_by_token_to_unregister(params)
     if equal_token(params)
