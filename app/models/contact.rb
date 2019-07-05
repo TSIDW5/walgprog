@@ -6,32 +6,33 @@ class Contact < ApplicationRecord
   validates :name, presence: true
   validates :email,
             presence: true,
-            length: {maximum: 255},
-            format: {with: Devise.email_regexp},
-            uniqueness: {case_sensitive: false},
+            length: { maximum: 255 },
+            format: { with: Devise.email_regexp },
+            uniqueness: { case_sensitive: false },
             email_unregistered: true
 
   validates :phone,
             presence: false,
-            length: {minimum: 14, maximum: 15},
-            format: {with: PHONE_REGEX, allow_blank: true}
+            length: { minimum: 14, maximum: 15 },
+            format: { with: PHONE_REGEX, allow_blank: true }
 
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
-    end while Contact.exists?(column => self[column])
+    end
+     while Contact.exists?(column => self[column])
   end
 
   def update_by_token(params, params_contact)
-      if valid_token(params)
-        if update(params_contact)
-          ContactMailer.with(contacts: self).confirmation_update.deliver
-          return 'contacts/update_success'
-        end
-        'edit'
-      else
-        'contacts/time_exceeded'
+    if valid_token(params)
+      if update(params_contact)
+        ContactMailer.with(contacts: self).confirmation_update.deliver
+        return 'contacts/update_success'
       end
+      'edit'
+    else
+      'contacts/time_exceeded'
+  end
     end
 
   def update_by_token_to_unregister(params)
@@ -45,7 +46,7 @@ class Contact < ApplicationRecord
   end
 
   def exist_email(params_contact)
-    return true if Contact.exists?(:email => params_contact[:email])
+    return true if Contact.exists?(email: params_contact[:email])
 
     false
   end
@@ -61,6 +62,7 @@ class Contact < ApplicationRecord
     if (params[:token].eql? update_data_token) && (final_valid_time >= Time.zone.now)
       return true
     end
+
     false
   end
 
@@ -75,5 +77,4 @@ class Contact < ApplicationRecord
   def send_confirmation_update
     ContactMailer.with(contacts: self).confirmation_update.deliver
   end
-
 end

@@ -36,7 +36,6 @@ describe 'Contact::update', type: :feature do
 
   context 'with no valid fields', js: true do
     it 'show errors when fields are blank' do
-      
       fill_in 'contact_name', with: ''
       fill_in 'contact_email', with: ''
       fill_in 'contact_phone', with: ''

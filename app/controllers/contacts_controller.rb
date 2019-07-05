@@ -28,9 +28,7 @@ class ContactsController < ApplicationController
   end
 
   def edit
-    if !@contact.valid_token(params)
-      flash[:error] = 'Token inválido'
-    end
+    if !@contact.valid_token(params) flash[:error] = I18n.t('activerecord.models.contact.token_expired')
   end
 
   def unregister
@@ -83,4 +81,5 @@ class ContactsController < ApplicationController
   def params_contact
     params.require(:contact).permit(:name, :email, :phone, :institution_id)
   end
+
 end
