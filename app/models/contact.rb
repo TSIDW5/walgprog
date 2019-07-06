@@ -5,11 +5,11 @@ class Contact < ApplicationRecord
 
   validates :name, presence: true
   validates :email,
-            presence: true,
-            length: maximum: '255',
+            length: {maximum: 255},
             format: {with: Devise.email_regexp},
             uniqueness: {case_sensitive: false},
-            email_unregistered: true
+            email_unregistered: true,
+            presence: true
 
   validates :phone,
             presence: false,
