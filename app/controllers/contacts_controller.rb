@@ -10,25 +10,14 @@ class ContactsController < ApplicationController
 
   def create
     if !@contact.exist_email(params_contact)
-      generate_tokens
-      if @contact.save
-        save_sucess
-        @contact.send_welcome_email
-      else
-        flash.now[:error] = I18n.t('flash.actions.errors')
-        render :new
-      end
+      email_no_exists
     else
-      set_contact_by_email
-      generate_tokens
-      @contact.save
-      @contact.send_self_update
-      render :update_email
+      email_exists
     end
   end
 
   def edit
-    if !@contact.valid_token(params)
+    return unless @contact.valid_token(params)
       flash[:error] = I18n.t('activerecord.models.contact.token_expired')
     end
   end
@@ -51,14 +40,11 @@ class ContactsController < ApplicationController
     redirect_to contacts_path
   end
 
-  def confirm_unregister;
-  end
+  def confirm_unregister; end
 
-  def unregistered;
-  end
+  def unregistered; end
 
-  def updated;
-  end
+  def updated; end
 
   private
 
@@ -84,4 +70,22 @@ class ContactsController < ApplicationController
     params.require(:contact).permit(:name, :email, :phone, :institution_id)
   end
 
+  def email_exists
+    set_contact_by_email
+    generate_tokens
+    @contact.save
+    @contact.send_self_update
+    render :update_email
+  end
+
+  def email_no_exists
+    generate_tokens
+    if @contact.save
+      save_sucess
+      @contact.send_welcome_email
+    else
+      flash.now[:error] = I18n.t('flash.actions.errors')
+      render :new
+    end
+  end
 end
