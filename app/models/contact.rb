@@ -61,6 +61,7 @@ class Contact < ApplicationRecord
   def valid_token(params)
     final_valid_time = (update_data_send_at + 2.hours)
     return true if (params[:token].eql? update_data_token) && (final_valid_time >= Time.zone.now)
+    
     false
   end
 
