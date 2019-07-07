@@ -1,0 +1,14 @@
+<%= simple_form_for(@contact, url: contact_unregister_path(@contact, @contact.unregister_token)) do | f | %>
+
+<h3 class="card-title text-center"><%= t('feedback.confirm_unregister') %></h3>
+
+<div class="row">
+  <div class="col-6">
+    <%= link_to t('helpers.back'), new_contact_path, class: 'btn btn-secondary mr-7' %>
+  </div>
+  <div class="col-6">
+    <%= f.button :submit, class: 'btn-primary' %>
+  </div>
+</div>
+
+<% end %>
