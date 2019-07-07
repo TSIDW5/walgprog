@@ -1,4 +1,5 @@
 test:
+  mailer.host: 'localhost'
   mailer.port: '3000'
   mailer.from: 'walgprog@utfpr.edu.br'
   mailer.smtp: 'smtp.mailtrap.io'
@@ -8,4 +9,3 @@ test:
   mailer.smtp.password: ''
   mailer.smtp.authentication: 'cram_md5'
   browser.headless: 'true'
-
