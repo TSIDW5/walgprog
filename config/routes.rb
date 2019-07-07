@@ -1,6 +1,30 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
+  get '/contacts',
+      to: 'contacts#new', as: :new_contact
+
+  post '/contacts',
+       to: 'contacts#create'
+
+  get 'contacts/:id/confirm_unregister/:token',
+      to: 'contacts#confirm_unregister', as: :contact_confirm_unregister
+
+  patch 'contacts/:id/unregister/:token',
+        to: 'contacts#unregister', as: :contact_unregister
+
+  get 'contacts/:id/edit/:token',
+      to: 'contacts#edit', as: :contact_edit
+
+  patch 'contacts/:id/update/:token',
+        to: 'contacts#update', as: :contact_update
+
+  get 'contacts/updated',
+      to: 'contacts#updated', as: :contact_updated
+
+  get 'contacts/time_exceeded',
+      to: 'contacts#time_exceeded', as: :contact_time_exceeded
+
   devise_for :admins
   authenticate :admin do
     namespace :admins do
