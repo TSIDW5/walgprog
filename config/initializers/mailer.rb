@@ -10,4 +10,4 @@ ActionMailer::Base.smtp_settings = {
   domain: ENV['mailer.smtp.domain'],
   user_name: ENV['mailer.smtp.username'],
   password: ENV['mailer.smtp.password'],
-  authentication: ENV['mailer.smtp.authentication']
+  authentication: ENV['mailer.smtp.authentication'] }
