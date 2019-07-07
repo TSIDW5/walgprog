@@ -28,7 +28,7 @@ describe 'Contact::update', type: :feature do
       fill_in 'contact_phone', with: local_phone
       selectize institution.name, from: 'contact_institution'
 
-      click_button
+      page.first('.btn-primary', minimum: 1).click
 
       expect(page).to have_content(I18n.t('feedback.update_success'))
     end
@@ -41,7 +41,7 @@ describe 'Contact::update', type: :feature do
       fill_in 'contact_phone', with: ''
       selectize '', from: 'contact_institution'
 
-      click_button
+      page.first('.btn-primary', minimum: 1).click
 
       message_blank_error = I18n.t('errors.messages.blank')
       expect(page).to have_message(message_blank_error, in: 'div.contact_name')
@@ -54,7 +54,7 @@ describe 'Contact::update', type: :feature do
       fill_in 'contact_email', with: 'email'
       fill_in 'contact_phone', with: '131313'
 
-      click_button
+      page.first('.btn-primary', minimum: 1).click
 
       expect(page).to have_message(I18n.t('errors.messages.invalid'), in: 'div.contact_phone')
       expect(page).to have_message(I18n.t('errors.messages.invalid'), in: 'div.contact_email')
