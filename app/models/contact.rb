@@ -40,10 +40,10 @@ class Contact < ApplicationRecord
     if equal_token(params)
       if Contact.update(params[:id], unregistered: true)
         ContactMailer.with(contacts: self).unregistered_contact.deliver
-        return true
+        return :unregistered
       end
     end
-    false
+    :time_exceeded
   end
 
   def exist_email(params_contact)

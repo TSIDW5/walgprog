@@ -87,7 +87,7 @@ RSpec.describe Contact, type: :model do
       it {
         params = { id: contact.id, token: contact.unregister_token }
 
-        expect(contact.update_by_token_to_unregister(params)).to eq(true)
+        expect(contact.update_by_token_to_unregister(params)).to eq(:unregistered)
       }
     end
 
@@ -97,7 +97,7 @@ RSpec.describe Contact, type: :model do
       it {
         params = { id: contact.id, token: 'lagarto' }
 
-        expect(contact.update_by_token_to_unregister(params)).to eq(false)
+        expect(contact.update_by_token_to_unregister(params)).to eq(:time_exceeded)
       }
     end
 

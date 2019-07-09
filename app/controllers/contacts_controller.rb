@@ -23,11 +23,7 @@ class ContactsController < ApplicationController
   end
 
   def unregister
-    if @contact.update_by_token_to_unregister(params)
-      render :unregistered
-    else
-      redirect_to admins_institution_path
-    end
+    render @contact.update_by_token_to_unregister(params)
   end
 
   def update
