@@ -58,6 +58,7 @@ pt-BR:
         <<: *commons
       contact:
         institution: Instituição
+        email_exists: Email em Uso
       event:
         name: Nome
         initials: Iniciais
