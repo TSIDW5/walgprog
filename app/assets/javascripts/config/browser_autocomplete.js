@@ -3,5 +3,5 @@ $(document).on('turbolinks:load', () => {
 });
 
 WAlgProg.disableBrowserAutocomple = () => {
-  setTimeout(() => { $('input').attr('autocomplete', 'nope'); } , 1000);
+  setTimeout(() => { $('input').attr('autocomplete', 'nope'); }, 1000);
 };
