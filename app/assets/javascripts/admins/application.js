@@ -30,6 +30,7 @@
 //= require config/selectize
 //= require config/simple_mde
 //= require config/fontawesome_iconpicker
+//= require config/browser_autocomplete
 
 
 // Lib files
