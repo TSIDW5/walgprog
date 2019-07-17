@@ -20,6 +20,7 @@
 //= require config/namespace
 //= require config/jmask
 //= require config/selectize
+//= require config/browser_autocomplete
 
 
 // App files
