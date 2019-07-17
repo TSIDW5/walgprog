@@ -2,7 +2,7 @@
 //= require sifter/sifter.min
 //= require selectize/selectize.min
 
-WAlgProg.selectize = {}
+WAlgProg.selectize = {};
 
 $(document).on('turbolinks:load', () => {
   WAlgProg.selectize.init();
