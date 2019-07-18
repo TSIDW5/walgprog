@@ -10,7 +10,9 @@ describe 'Admins::Institution::index', type: :feature do
   end
 
   context 'with data' do
-    it 'showed' do
+    let(:unapproved) { build(:institution, :unapproved) }
+
+    it 'showed only approved' do
       institutions.each do |institution|
         expect(page).to have_content(institution.name)
         expect(page).to have_content(institution.acronym)

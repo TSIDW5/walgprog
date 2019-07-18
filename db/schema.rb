@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_150417) do
     t.bigint "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "approved", default: true
     t.index ["city_id"], name: "index_institutions_on_city_id"
   end
 
