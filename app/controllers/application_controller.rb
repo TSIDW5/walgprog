@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def layout_by_resource
     return 'layouts/devise/session' if devise_controller?
 
-    'layouts/application'
+    'home/application'
   end
 
   def after_sign_in_path_for(*)

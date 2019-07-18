@@ -20,11 +20,19 @@ class Event < ApplicationRecord
 
   def self.current_color
     date = Time.now.utc
+    find_by(['beginning_date >= :beginning_year and end_date <= :end_year',
+             { beginning_year: date.beginning_of_year, end_year: date.end_of_year }])
+
+    return Event.current.color if Event.current
+
+    '#000'
+  end
+
+  def self.current
+    date = Time.now.utc
     e = find_by(['beginning_date >= :beginning_year and end_date <= :end_year',
                  { beginning_year: date.beginning_of_year, end_year: date.end_of_year }])
 
-    return e.color if e
-
-    '#000'
+    e
   end
 end

@@ -1,0 +1,11 @@
+<section id="<%= section.id %>" class="<%= @classes.first %> section">
+  <div class="container">
+    <header>
+      <h2><%= section.title %></h2>
+    </header>
+    <article>
+      <%= raw(section.content) %>
+    </article>
+  </div>
+</section>
+<% @classes.delete(@classes.first) %>

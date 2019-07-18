@@ -9,12 +9,12 @@
 * Vendors stylesheets
 **************************************************************/
 @import 'selectize/selectize.min';
-
+@import 'html5up-template/main';
 
 /*************************************************************
 * Configurations
 **************************************************************/
-@import 'config/tabler';
+//@import 'config/tabler';
 @import 'config/logo';
 
 
@@ -22,8 +22,10 @@
 * Customizations
 **************************************************************/
 @import 'customizations/bootstrap';
-@import 'customizations/selectize'
+@import 'customizations/selectize';
 
 /*************************************************************
 * Apps stylesheets
 **************************************************************/
+@import 'home/app';
+

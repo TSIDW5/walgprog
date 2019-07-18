@@ -1,0 +1,358 @@
+/*************************************************************
+ * UTILS
+ **************************************************************/
+.text-it {
+  font-style: italic;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.22);
+}
+
+.section h2, .section h3 {
+  text-align: center;
+}
+
+.section p {
+  text-align: justify;
+}
+
+.section li {
+  text-align: left;
+}
+/*************************************************************
+ * LOGO
+ **************************************************************/
+#logo {
+  p { font-size: .5em; }
+}
+
+/*************************************************************
+ * PAGE HEADER - SIDEBAR
+ **************************************************************/
+#header {
+  overflow-y: auto;
+}
+
+/*************************************************************
+ * MAIN CONTENT
+ **************************************************************/
+#main {
+  &> section.one {
+    background-color: inherit;
+  }
+
+  &> section.cover article {
+    text-align: justify;
+    font-size: 85%;
+  }
+
+  &> section.cover header p {
+    margin-top: 0px;
+  }
+
+  &> section.five {
+    background-color: #E1E7E6;
+  }
+
+  &> section.six {
+    background-color: #DCE1E0;
+  }
+
+  &> section.seven {
+    background-color: rgba(220, 225, 224, 0.47);
+  }
+}
+
+/*************************************************************
+ * FOOTER
+ **************************************************************/
+#footer {
+  background-color: #222629;
+
+  .copyright {
+    margin-bottom: 15px;
+  }
+}
+
+/*************************************************************
+ * LIST
+ **************************************************************/
+ul.default {
+  padding-left: 3em;
+}
+
+/*************************************************************
+ * SCHEDULE - ARTICLES
+ **************************************************************/
+#workshop-info {
+    font-size: 14px;
+    margin-left: 0;
+}
+
+#workshop-info ul li {
+  margin-bottom: -12px;
+  margin-top: -12px;
+}
+
+#schedule .article-data {
+  margin-left: 60px;
+  margin-bottom: 35px;
+}
+
+#schedule .article-data  p {
+  margin: 0;
+  font-size: 15px;
+  margin: -12px;
+}
+
+#schedule .article-data  p:first-child {
+  font-weight: bold;
+  line-height: normal;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+#schedule .article-data article.article-info {
+  display :none;
+  margin-left: -2px;
+}
+
+#schedule .article-data article.article-info header {
+  font-weight: bold;
+  line-height: normal;
+  margin-bottom: 10px;
+  font-size: 14px;
+  margin: 15px 15px 15px 0px;
+}
+
+#schedule .article-data article.article-info p {
+  line-height: normal;
+  margin-bottom: 20px;
+  margin-left: 0px;
+}
+
+#schedule .article-data article.article-info ul {
+  font-size: 14px;
+  list-style: none;
+}
+
+#schedule .article-data article.article-info ul li {
+  margin-bottom: -12px;
+}
+
+nav#nav ul li a span {
+		font-size: 0.7em;
+}
+
+.absent {
+  color: rgba(0, 0, 0, 0.37);
+}
+
+/*************************************************************
+ * COLORS
+ **************************************************************/
+body {
+  color: #575757;
+}
+
+#nav ul li a.active span:before {
+  // color: rgba(248, 255, 5, 1);
+  color: #F87829;
+
+}
+
+.btn-color {
+  background-color: #F87829;
+
+  &:hover {
+    background-color: #EA5F2D;
+  }
+}
+
+.title-color {
+  color: #F87829;
+}
+
+/*************************************************************
+ * UTIlS
+ **************************************************************/
+.not-active {
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/*************************************************************
+ * TOOLTIP
+ **************************************************************/
+.tooltip {
+    position: relative;
+    display: inline-block;
+    // border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    // padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 18px;
+    left: 101%;
+    font-size: smaller;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/*************************************************************
+ * CHECKBOX
+ **************************************************************/
+.checkboxs {
+  padding-left: 3em;
+
+  .checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default checkbox */
+  .checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 9px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .checkbox-container input ~ .checkmark {
+    background-color: #FFF;
+    border: 1px solid #F87829;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .checkbox-container input:checked ~ .checkmark {
+    background-color: #F87829;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+}
+/*************************************************************
+ * Alerts
+ **************************************************************/
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+/*************************************************************
+ * Progress
+ **************************************************************/
+.progress {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #FFF;
+    border-radius: .25rem;
+}
+
+.progress-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    background-color: #F87829;
+    transition: width .6s ease;
+}

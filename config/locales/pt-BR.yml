@@ -2,7 +2,10 @@ pt-BR:
   views:
     sidebar:
       walgprog: 'WAlgProg'
+      subtitle: 'Workshop de Ensino em Pensamento Computacional, Algoritmos e Programação'
       contacts: 'Contatos'
+    footer:
+      maintained: 'Mantido por'
   time:
     formats:
       short: '%d/%m/%Y'
@@ -270,3 +273,5 @@ pt-BR:
   sponsors:
     add: Adicionar Patrocinador
     index: Patrocinadores
+  home:
+    index: WAlgProg
