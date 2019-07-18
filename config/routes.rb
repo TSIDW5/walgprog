@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get 'contacts/registered',
           to: 'contacts#registered', as: :contacts_registered
 
+      resources :email_templates, except: [:new, :create, :destroy]
       resources :contacts
       resources :institutions
       resources :admins, expect: :show

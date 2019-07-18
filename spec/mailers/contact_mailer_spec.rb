@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe ContactMailer, type: :mailer do
   describe 'send welcome email' do
     let(:contact) { create(:contact) }
+    let!(:welcome_email) { create(:email_template, :welcome) }
     let(:mail) { described_class.with(contact: contact).welcome.deliver_now }
 
     it 'renders the subject' do
-      expect(mail.subject).to eq(I18n.t('mail.welcome_email.subject'))
+      expect(mail.subject).to eq(welcome_email.subject)
     end
 
     it 'renders the receiver email' do
@@ -61,9 +62,10 @@ RSpec.describe ContactMailer, type: :mailer do
   describe 'send updated email' do
     let(:contact) { create(:contact) }
     let(:mail) { described_class.with(contact: contact).updated.deliver_now }
+    let!(:update_contact_email) { create(:email_template, :update_contact) }
 
     it 'renders the subject' do
-      expect(mail.subject).to eq(I18n.t('mail.updated.subject'))
+      expect(mail.subject).to eq(update_contact_email.subject)
     end
 
     it 'renders the receiver email' do

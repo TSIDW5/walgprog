@@ -136,3 +136,5 @@ Rails/SkipsModelValidations:
   Exclude:
     - 'app/controllers/admins/sections_controller.rb'
 
+Rails/OutputSafety:
+  Enabled: false

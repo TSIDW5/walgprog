@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 2019_07_16_150417) do
     t.index ["institution_id"], name: "index_contacts_on_institution_id"
   end
 
+  create_table "email_templates", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "subject", null: false
+    t.text "content_markdown", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "update_link_title"
+    t.string "unregister_link_title"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "initials"

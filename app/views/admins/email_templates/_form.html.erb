@@ -1,0 +1,48 @@
+<%= simple_form_for([:admins, @template]) do |f| %>
+
+  <div class="row">
+
+    <div class="col-md-4">
+      <%= f.input :subject %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :update_link_title %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :unregister_link_title %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-9">
+      <%= f.input(:content_markdown, input_html: { class: 'markdown-editor' }) %>
+    </div>
+
+    <div class="col-md-3">
+
+      <ul class="list-unstyled list-inline">
+        <h4 class="text-center">
+          <%= t('email_template.text_variables') %>
+        </h4>
+        <li class="list-group-item">
+          <strong>@nome</strong>: <%= t('email_template.contact_name') %>
+        </li>
+        <li class="list-group-item">
+          <strong>@linkAtualizar</strong>: <%= t('email_template.update_link') %>
+        </li>
+        <li class="list-group-item">
+          <strong>@linkDesregistrar</strong>: <%= t('email_template.unregister_link') %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <%= link_to t('helpers.back'), admins_email_templates_path, class: 'btn btn-secondary float-left' %>
+    <%= f.button :submit, class: 'btn btn-primary ml-auto' %>
+  </div>
+<% end %>

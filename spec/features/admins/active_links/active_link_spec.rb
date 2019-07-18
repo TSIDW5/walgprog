@@ -155,6 +155,25 @@ RSpec.describe 'Admins::active_link', type: :feature do
     end
   end
 
+  context 'when visit email_templates' do
+    let!(:email_template) { create(:email_template, :welcome) }
+
+    it 'index active' do
+      visit admins_email_templates_path
+      expect(page).to have_link(I18n.t('email_template.index'), class: active_class)
+    end
+
+    it 'edit active' do
+      visit edit_admins_email_template_path(email_template)
+      expect(page).to have_link(I18n.t('email_template.index'), class: active_class)
+    end
+
+    it 'show active' do
+      visit admins_email_template_path(email_template)
+      expect(page).to have_link(I18n.t('email_template.index'), class: active_class)
+    end
+  end
+
   context 'when visit sponsors' do
     let!(:event) { create(:event) }
 

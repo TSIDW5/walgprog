@@ -4,6 +4,7 @@ describe 'Admins::Contact::create', type: :feature do
   let(:admin) { create(:admin) }
   let(:resource_name) { Contact.model_name.human }
   let!(:institution) { create_list(:institution, 2).sample }
+  let!(:welcome_email) { create(:email_template, :welcome) }
 
   before(:each) do
     login_as(admin, scope: :admin)

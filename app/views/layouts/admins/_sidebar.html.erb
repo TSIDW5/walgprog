@@ -26,6 +26,10 @@
       <span class="icon mr-3"><%= icon('fas', 'graduation-cap') %></i></span><%= t('researchers.index') %>
     <% end %>
 
+    <%= active_link_to admins_email_templates_path, class: 'list-group-item list-group-item-action', active: :inclusive do %>
+      <span class="icon mr-3"><%= icon('fas', 'envelope') %></i></span><%= t('activerecord.models.email_template.other') %>
+    <% end %>
+
     <span class="sidebar-heading pl-0 pt-2 pb-2">
       <%= icon('fas', 'address-book', class: 'mr-1') %>
       <%= t('views.sidebar.contacts') %>
@@ -42,6 +46,5 @@
     <%= active_link_to(admins_contacts_unregistered_path, class: 'list-group-item list-group-item-action', active: :exact) do %>
       <span class="icon mr-3"><%= icon('far', 'address-book') %></span><%= t('contacts.unregistered') %>
     <% end %>
-
   </div>
 </div>

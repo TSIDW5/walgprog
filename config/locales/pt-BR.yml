@@ -38,6 +38,9 @@ pt-BR:
       sponsor_event:
         one: Patrocinador
         other: Patrocinadores
+      email_template:
+        one: Modelo de email
+        other: Modelos de email
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -95,6 +98,15 @@ pt-BR:
         alternative_content_md: Texto Alternativo
         icon: Ícone
         status: Status
+        alternative_text: Texto alternativo
+        <<: *commons
+      email_template:
+        name: Nome
+        subject: Assunto
+        content: Conteúdo
+        content_markdown: Conteúdo
+        update_link_title: Título do link de atualizar dados
+        unregister_link_title: Título do link de desregistrar
         <<: *commons
   helpers:
     back: Voltar
@@ -109,6 +121,7 @@ pt-BR:
       'false': Não
     until: até
     registered: 'Registrado: %{date}'
+    user: Usuário
   enums:
     user_types:
       administrator: 'Administrador'
@@ -270,3 +283,14 @@ pt-BR:
   sponsors:
     add: Adicionar Patrocinador
     index: Patrocinadores
+  email_template:
+    welcome_mail: Bem vindo
+    update_contact: Atualizar dados
+    unregister: Desregistrar
+    index: Modelos de email
+    edit: "Editar modelo de email: %{name}"
+    text_variables: Variáveis do email
+    contact_name: Nome do contato
+    update_link: Link de atualização de dados
+    unregister_link: Link de descadastro
+    show: "Pré-visualização do email: %{template}"

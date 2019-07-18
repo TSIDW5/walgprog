@@ -3,6 +3,8 @@ require 'rails_helper'
 describe 'Contact::update', type: :feature do
   let!(:institution) { create_list(:institution, 2).sample }
   let(:contact) { create(:contact) }
+  let!(:update_email) { create(:email_template, :update_contact) }
+
   # let(:contact_with_invalid_token) do
   #  create(:contact, update_data_send_at: (Time.zone.now - 6.hours))
   # end

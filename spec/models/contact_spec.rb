@@ -34,6 +34,8 @@ RSpec.describe Contact, type: :model do
   end
 
   describe 'send email' do
+    let!(:welcome_email) { create(:email_template, :welcome) }
+    let!(:update_email) { create(:email_template, :update_contact) }
     let(:contact) { create(:contact) }
 
     before(:each) do

@@ -1,0 +1,54 @@
+<% provide(:head_title, t('email_template.show', template: @template.name)) %>
+<% provide(:page_title, t('email_template.show', template: @template.name)) %>
+
+<div class="col-md-12">
+  <div class="row">
+
+    <div class="col-md-12">
+      <%= link_to edit_admins_email_template_path(@template), class: 'btn btn-outline-primary float-right' do %>
+        <i class="fa fa-edit"></i>
+        <%= t('helpers.edit') %>
+      <% end %>
+    </div>
+
+    <div class="col-md-12 mt-5">
+      <div class="row">
+
+        <div class="col-md-6">
+          <h5><%= t('activerecord.attributes.attribute_commons.name') %></h5>
+          <p><%= @template.name %></p>
+        </div>
+
+
+        <div class="col-md-6">
+          <h4><%= t('activerecord.attributes.email_template.update_link_title') %></h4>
+          <p><%= @template.update_link_title %></p>
+        </div>
+
+        <div class="col-md-6">
+          <h5><%= t('activerecord.attributes.email_template.subject') %></h5>
+          <p><%= @template.subject %></p>
+        </div>
+
+        <div class="col-md-6">
+          <h4><%= t('activerecord.attributes.email_template.unregister_link_title') %></h4>
+          <p><%= @template.unregister_link_title %></p>
+        </div>
+
+      </div>
+    </div>
+    <fieldset class="form-fieldset col-md-12">
+      <legend class="w-auto"><%= t('activerecord.attributes.email_template.content') %></legend>
+      <div class="row">
+        <div class="col-md-12">
+          <%= ERB::Util.html_escape @template.get_replaced_content(@update_link, @unregister_link, @name).html_safe %>
+        </div>
+      </div>
+    </fieldset>
+
+    <%= link_to admins_email_templates_path, class: 'btn btn-secondary float-left' do %>
+      <%= t('helpers.back') %>
+    <% end %>
+  </div>
+</div>
+
